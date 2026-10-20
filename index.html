@@ -264,7 +264,7 @@ footer{background:#100f0e}
 @keyframes topReviewMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 
-<!-- Meta Pixel Code: replace PASTE_NEW_META_PIXEL_ID_HERE with your NEW Meta Pixel ID -->
+<!-- Meta Pixel Code: replace 1100112712752830 with your NEW Meta Pixel ID -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -274,11 +274,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'PASTE_NEW_META_PIXEL_ID_HERE');
+fbq('init', '1100112712752830');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=PASTE_NEW_META_PIXEL_ID_HERE&ev=PageView&noscript=1" /></noscript>
+src="https://www.facebook.com/tr?id=1100112712752830&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
 
 <!-- TikTok Pixel Code Start: replace PASTE_NEW_TIKTOK_PIXEL_ID_HERE with your NEW TikTok Pixel ID -->
@@ -517,6 +517,8 @@ const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxO1keEO0hQgs3
 
 document.getElementById('orderForm').addEventListener('submit', async function(e){
   e.preventDefault();
+  // Track at most once for this individual order submission, while allowing future orders.
+  let purchaseTrackedForThisOrder = false;
 
   const form = this;
   const data = Object.fromEntries(new FormData(form).entries());
@@ -587,10 +589,9 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     thankYou.style.display = 'flex';
     document.body.style.overflow = '';
 
-    // Meta Purchase: fire only after the Thank You state is displayed.
-    // The session flag prevents duplicate Purchase events from this order flow.
-    if (!sessionStorage.getItem('meta_purchase_fired') &&
-        typeof fbq === 'function') {
+    // Meta Purchase event: fire only after the Thank You page is visible.
+    // The per-submission flag prevents duplicates for this order but permits future orders.
+    if (!purchaseTrackedForThisOrder && typeof fbq === 'function') {
       fbq('track', 'Purchase', {
         content_name: 'Waist Shaper',
         content_type: 'product',
@@ -599,13 +600,12 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
         value: total,
         currency: 'PKR'
       });
-      sessionStorage.setItem('meta_purchase_fired', '1');
+      purchaseTrackedForThisOrder = true;
     }
 
-    // TikTok Purchase: fire once only after the Thank You state is displayed.
-    // The session flag prevents duplicate Purchase events from this page flow.
-    if (!sessionStorage.getItem('tiktok_purchase_fired') &&
-        typeof ttq !== 'undefined' && typeof ttq.track === 'function') {
+    // TikTok Purchase remains disabled until a real TikTok Pixel ID is added.
+    if (typeof ttq !== 'undefined' && typeof ttq.track === 'function' &&
+        !String('PASTE_NEW_TIKTOK_PIXEL_ID_HERE').includes('PASTE_NEW_')) {
       ttq.track('Purchase', {
         content_type: 'product',
         content_ids: ['waist-shaper'],
@@ -613,7 +613,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
         value: total,
         currency: 'PKR'
       });
-      sessionStorage.setItem('tiktok_purchase_fired', '1');
     }
 
     // Show a clear thank-you state in the browser URL without requiring

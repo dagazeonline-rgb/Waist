@@ -322,8 +322,45 @@ src="https://www.facebook.com/tr?id=1100112712752830&ev=PageView&noscript=1" /><
 </script>
 <!-- TikTok Pixel Code End -->
 
+<style id="parcel-check-requested-changes">
+
+/* Requested parcel-check VIP bar and subtle animations only */
+.parcel-announcement{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:linear-gradient(110deg,#171514,#3a2420,#171514);color:#f4d9a4;border-bottom:2px solid #c9a46a;text-align:center;font-weight:800;letter-spacing:.2px;box-shadow:0 5px 18px rgba(0,0,0,.12)}
+.parcel-announcement:before{content:"";position:absolute;top:-80%;left:-30%;width:25%;height:260%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(22deg);animation:parcelShine 4s linear infinite}
+.parcel-announcement .parcel-icon{display:inline-block;font-size:22px;animation:parcelFloat 1.8s ease-in-out infinite}
+.parcel-announcement .parcel-en{font-size:14px}
+.parcel-announcement .parcel-ur{font-size:14px;color:#fff8ec}
+.parcel-check-card{position:relative;overflow:hidden;margin:0 0 22px;padding:20px 18px;text-align:center;border:1px solid #d8b777;border-radius:16px;background:linear-gradient(135deg,#fffaf0,#f6e7cb,#fffdf7);box-shadow:0 9px 25px rgba(126,91,43,.13);animation:parcelCardGlow 3s ease-in-out infinite}
+.parcel-check-card:after{content:"";position:absolute;inset:6px;border:1px dashed rgba(154,112,59,.45);border-radius:11px;pointer-events:none}
+.parcel-check-card .parcel-card-icon{display:block;font-size:32px;margin-bottom:5px;animation:parcelFloat 1.8s ease-in-out infinite}
+.parcel-check-card h2{margin:0 0 7px;font-size:clamp(18px,3vw,24px);color:#7e5a2d}
+.parcel-check-card p{margin:0;color:#32291e;font-weight:700;line-height:1.55;font-size:15px}
+.parcel-check-card .parcel-urdu{font-size:16px;margin-top:3px}
+@keyframes parcelShine{0%{left:-35%}100%{left:125%}}
+@keyframes parcelFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes parcelCardGlow{0%,100%{box-shadow:0 9px 25px rgba(126,91,43,.13)}50%{box-shadow:0 12px 30px rgba(201,164,106,.30)}}
+@keyframes orderBounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}55%{transform:translateY(0)}75%{transform:translateY(-2px)}}
+.pro-order,.cta,.submit{animation:orderBounce 2.2s ease-in-out infinite;will-change:transform}
+.pro-order:hover,.cta:hover,.submit:hover{animation-play-state:paused;transform:translateY(-2px)}
+.hero-image img,.visual img{image-rendering:auto;backface-visibility:hidden;transform:translateZ(0);animation:productFloat 5s ease-in-out infinite;filter:contrast(1.025) saturate(1.025)}
+@keyframes productFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-4px) scale(1.004)}}
+@media(prefers-reduced-motion:reduce){.parcel-announcement:before,.parcel-announcement .parcel-icon,.parcel-check-card,.parcel-check-card .parcel-card-icon,.pro-order,.cta,.submit,.hero-image img,.visual img{animation:none!important}}
+
+
+/* Static, simple single-line announcement — no scrolling */
+.parcel-announcement{display:block;white-space:nowrap;overflow:hidden;padding:9px 8px;}
+.parcel-announcement:before{display:none;}
+.parcel-announcement-track{display:flex;align-items:center;justify-content:center;gap:clamp(3px,1vw,10px);width:100%;min-width:0;white-space:nowrap;animation:none!important;position:relative;z-index:1;}
+.parcel-announcement-track>span{white-space:nowrap;flex:0 0 auto;}
+.parcel-announcement .parcel-icon{font-size:clamp(10px,2.5vw,17px);animation:none!important;}
+.parcel-announcement .parcel-en,.parcel-announcement .parcel-ur{font-size:clamp(7px,2.15vw,13px);white-space:nowrap;}
+.parcel-announcement .parcel-divider{opacity:.65;}
+@media(max-width:600px){.parcel-announcement{padding:8px 4px}.parcel-announcement-track{gap:3px}.parcel-announcement .parcel-en,.parcel-announcement .parcel-ur{font-size:clamp(6.5px,2.1vw,10px)}}
+
+</style>
 </head>
 <body>
+<div class="parcel-announcement" role="note" aria-label="Parcel check before payment"><div class="parcel-announcement-track"><span class="parcel-icon">📦</span><span class="parcel-en">Parcel check karein, phir payment karein</span><span class="parcel-divider">•</span><span class="parcel-ur" lang="ur" dir="rtl">پہلے پارسل چیک کریں، پھر ادائیگی کریں</span><span class="parcel-icon">📦</span></div></div>
 <header class="pro-header">
   <div class="pro-inner">
     <a class="pro-logo" href="#top">WAIST<span>SHAPER</span></a>
@@ -358,7 +395,8 @@ src="https://www.facebook.com/tr?id=1100112712752830&ev=PageView&noscript=1" /><
   </div>
 </section>
 <div class="order-box" id="order">
-    <div class="order-heading"><span>📦</span><div><h2>Place Your Order</h2><p>Fill in your details. We'll contact you for confirmation.</p></div></div>
+    <div class="parcel-check-card" role="note" aria-label="Check parcel before payment"><span class="parcel-card-icon">📦</span><h2>Parcel check karein, phir payment karein</h2><p class="parcel-urdu" lang="ur" dir="rtl">پہلے پارسل چیک کریں، پھر ادائیگی کریں</p></div>
+    <div class="order-heading"><span>🛒</span><div><h2>Place Your Order</h2><p>Fill in your details. We'll contact you for confirmation.</p></div></div>
     <form id="orderForm">
 <label>Choose Your Deal
   <select name="selectedDeal" required>
